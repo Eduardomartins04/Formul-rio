@@ -2,15 +2,17 @@
 <html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Redirecionar para Login</title>
-  <script>
-    // Redirecionar apenas se ainda não estivermos na página de login
-    if (!window.location.pathname.endsWith('/login.html')) {
-      window.location.href = '/login.html';
-    }
-  </script>
+  <title>Redirecionar...</title>
 </head>
 <body>
-  <p>Redirecionando para login...</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+    if (code) {
+      window.location.href = "https://eduardomartins04.github.io/formulario/form.html?code=" + code;
+    } else {
+      document.body.innerHTML = "<p>Erro: Código não encontrado na URL.</p>";
+    }
+  </script>
 </body>
 </html>
